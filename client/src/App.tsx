@@ -2,8 +2,6 @@ import { useDocument } from "./hooks/useDocument";
 import Document from "./Document";
 import Sidebar, { formatTimeAgo } from "./Sidebar";
 import LoadingOverlay from "./LoadingOverlay";
-import Logo from "./assets/logo.png";
-
 import { ChatPanel } from './ChatPanel';
 
 
@@ -42,7 +40,7 @@ return (
 
       {/* Top Header */}
       <header className="flex items-center justify-center px-8 bg-black text-white h-[70px] shrink-0">
-        <img src={Logo} alt="Logo" style={{ height: "40px" }} />
+        <div className="text-lg font-semibold tracking-tight">AI Text Editor</div>
       </header>
 
       {/* Global Error Banner */}
