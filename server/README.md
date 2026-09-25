@@ -1,40 +1,41 @@
-# Patent Reviewer Backend
+# Text Editor Backend
 
-## Layout
+FastAPI backend for document persistence, version management, and AI-assisted editing.
 
-Application code is in the `app/` directory.
+## Main Components
 
-```
-app
-├── __main__.py # FastAPI app, and routes
-├── models.py # DB models
-├── schemas.py # Schema objects
-├── data.py # Seed data
-└── db.py # Database utils
-```
+- app/__main__.py — FastAPI application and API routes
+- app/models.py — SQLAlchemy document and version models
+- app/schemas.py — Pydantic request/response schemas
+- app/data.py — starter document data
+- app/seed.py — database seed logic
+- app/services/ai_service.py — structured AI editing and HTML sanitisation
+- tests/ — backend unit and API tests
 
-## First-time setup
+## Setup
 
-This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+This project uses uv for Python dependency management.
 
-```sh
-# Install uv (if not already installed)
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install dependencies
+~~~bash
 uv sync
-```
+~~~
 
-Make sure you create a .env file (see .env.example) with the OpenAI API key we've provided.
+Set the OpenAI API key in a root .env file:
 
-## Running locally
+~~~env
+OPENAI_API_KEY=your_api_key_here
+~~~
 
-To run the backend locally, with auto-reload on code changes,
+## Running Locally
 
-```sh
+~~~bash
 uv run uvicorn app.__main__:app --reload
-```
+~~~
 
-## DB
+The application initialises an in-memory SQLite database with starter documents on startup.
 
-On start-up, the app will initialise an in-memory SQLite DB, and fill it with some seed data. If you decide that you want to reset your changes, all you need to do is re-run the backend.
+## Tests
+
+~~~bash
+uv run pytest
+~~~
